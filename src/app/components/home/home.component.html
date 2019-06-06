@@ -1,3 +1,43 @@
 <h1>
   this is home component!
 </h1>
+<!-- ng if -->
+<div *ngIf="flag">
+  <h1>true</h1>
+</div>
+<div *ngIf="!flag">
+  <h1>false</h1>
+</div>
+
+<!-- ng switch -->
+<div [ngSwitch]="order">
+  <div *ngSwitchCase="1">output</div>
+  <div *ngSwitchCase="2">output2</div>
+  <div *ngSwitchDefault>output3</div>
+</div>
+
+<!-- ng class and ng style -->
+<div [ngClass]="{red: true, yellow:false}">
+  ng class
+</div>
+<hr>
+<div [ngClass]="{red: flag, yellow:!flag}">
+  ng
+</div>
+
+<p [ngStyle]="{'color': attr}">我是什么颜色</p>
+<div [ngStyle]="{'background-color': attr}">ng style</div>
+<!-- pipe -->
+<h1>pipe</h1>
+{{today|date:'yyyy-mm-dd HH:MM:SS'}}
+
+<button (click)='run()'>执行事件</button>
+
+<!-- 双向数据绑定 -->
+<h2>MVVM  只是针对表单</h2>
+<input type="text" [(ngModel)]="keywords">
+{{keywords}}
+
+<button (click)='changekeywords()'>change keywords</button>
+
+<button (click)='getkeywords()'>get keywords</button>

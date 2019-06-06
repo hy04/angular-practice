@@ -3,4 +3,25 @@
 <h4>{{message}}</h4>
 <div title="im a div">hover me</div>
 <div [title]="student">hover me again</div>
+<!-- 绑定html标签 -->
+<span [innerHTML]="content"></span>
+
+<!-- 遍历数组 -->
+<ol>
+    <li *ngFor="let item of arr">
+        {{item}}
+    </li>
+</ol>
+
+<ul>
+    <li *ngFor="let item of list">
+        {{item}}
+    </li>
+</ul>
+<ul>
+    <li *ngFor="let item of userlist">
+        {{item.username}}--{{item.age}}
+    </li>
+</ul>
+
 <app-header></app-header>
