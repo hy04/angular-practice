@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+//import services
+import { StorageService } from '../../services/storage.service';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
@@ -9,12 +10,17 @@ export class TodolistComponent implements OnInit {
 
   public keyword:string;
   public todolist:any[]=[];
-
-
-
-  constructor() { }
+  constructor(public storage:StorageService) { 
+    console.log(this.storage.get('todolist'));
+  }
 
   ngOnInit() {
+    console.log('页面每次刷新会调用生命周期函数');
+    //每次刷新都从localstorage里获取数据，存入searchlist并读取
+    var todolist:any =this.storage.get('todolist');
+    if(todolist){
+      this.todolist=todolist;
+    }
   }
 
   doAdd(e){
@@ -29,6 +35,8 @@ export class TodolistComponent implements OnInit {
           title:this.keyword,
           status:0  //0未完成 1已完成
         });
+        //存入浏览器中的local storage里
+        this.storage.set('todolist',this.todolist);
       }else{
         alert("repeat data");
       }
@@ -40,6 +48,7 @@ export class TodolistComponent implements OnInit {
   }
   deleteData(key){
     this.todolist.splice(key,1);
+    this.storage.set('todolist',this.todolist);
   }
   //查看todolist中有没有该keyword
   todolistHasKeyword(todolist:any,keyword:any){
@@ -60,7 +69,7 @@ export class TodolistComponent implements OnInit {
   return false;
 
   }
-
+  //判断输入框是否为空
   isNull(str){
     if(str=="" || str==undefined){
       return true;
@@ -68,5 +77,9 @@ export class TodolistComponent implements OnInit {
     var regu="^[]+$";
     var re=new RegExp(regu);
     return re.test(str);
+  }
+  checkboxChange(){
+    console.log('触发事件');
+    this.storage.set('todolist',this.todolist);
   }
 }

@@ -8,14 +8,14 @@
     <ul>
       <!-- 如果status是1就隐藏在这个ul里隐藏 -->
       <li *ngFor="let item of todolist;let key=index;" [hidden]="item.status==1">
-       <input type="checkbox" [(ngModel)]="item.status" />  {{item.title}}   ------ <button (click)="deleteData(key)">X</button>
+       <input type="checkbox" [(ngModel)]="item.status" (change)="checkboxChange()"/>  {{item.title}}   ------ <button (click)="deleteData(key)">X</button>
       </li>
     </ul>
     <h3>已完成事项</h3>
     <ul>
         <!-- 如果status是0就隐藏在这个ul里隐藏 -->
         <li *ngFor="let item of todolist;let key=index;" [hidden]="item.status==0">
-         <input type="checkbox" [(ngModel)]="item.status" />  {{item.title}}   ------ <button (click)="deleteData(key)">X</button>
+         <input type="checkbox" [(ngModel)]="item.status" (change)="checkboxChange()"/>  {{item.title}}   ------ <button (click)="deleteData(key)">X</button>
         </li>
       </ul>
 
