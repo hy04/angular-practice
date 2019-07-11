@@ -13,6 +13,10 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 
 //import services
 import { StorageService } from './services/storage.service';
+import { Home2Component } from './components/home2/home2.component';
+import { ViewchildComponent } from './components/viewchild/viewchild.component';
+import { Header2Component } from './components/header2/header2.component';
+import { TransitionComponent } from './components/transition/transition.component';
 
 
 @NgModule({
@@ -23,7 +27,11 @@ import { StorageService } from './services/storage.service';
     HeaderComponent,
     FormComponent,
     SearchComponent,
-    TodolistComponent
+    TodolistComponent,
+    Home2Component,
+    ViewchildComponent,
+    Header2Component,
+    TransitionComponent
   ],
   imports: [
     BrowserModule,

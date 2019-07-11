@@ -13,7 +13,6 @@ export class SearchComponent implements OnInit {
 
   public keyword:string;
   public historylist:any[]=[];
-
   constructor(public storage:StorageService) { 
     
   }
